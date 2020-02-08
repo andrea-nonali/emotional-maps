@@ -1,8 +1,6 @@
 package Soluzione;
 
 //NONALI ANDREA 733636 --> Project Manager
-//SCOLARI GIANLUCA 734624
-//ENEI STEFANO 7297382
 
 import java.io.BufferedReader;
 import java.io.IOException;
