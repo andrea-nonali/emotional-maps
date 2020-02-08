@@ -12,7 +12,7 @@ The goal of this project is to parse data, that represent an event on three Mila
 DATA STRUCTURE -->
 The data structure we used is an HashMap of Red Black tree (java TreeSet) with key--> year and value-->TreeSet of the year.
 
--->PERFORMANCE
+PERFORMANCE-->
 The import of events takes O(1) to find the corresponding year of a event and O(log n) where n is the number of data in the corresponding year: total = O(log n).
 In the test we did it takes 10 seconds to parse and store 1 milion events.
 
