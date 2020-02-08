@@ -1,15 +1,15 @@
 ﻿# Laboratorio_A
-This project was my firts one at the University. It is called Emotional Maps.
+This was my firts project at the University. It is called Emotional Maps.
 
-For further information in this repository you can find two Manuals: Manuale Utente (for Users), Manuale Tecnico (for experts),
+For deeper information in this repository you can find two Manuals: Manuale Utente (for Users), Manuale Tecnico (for experts),
 but they are written in Italian.
-This project has JavaDoc comments.
+Furthermore the code has JavaDoc comments.
 
 DESCRIPTION
 
     • GOAL
       
-The goal of this project is to parse data, that represent an event on three Milan place, from a file and store it in a data structure. Once we have stored data we create, under your request, an Emotional Map: a percentage representation of the events that we have stored from a lower bound date and an upper bound date. 
+The goal is to parse data, that represent an event on three Milan place, from a file and store it in a data structure. Once we have stored data we create, under your request, an Emotional Map: a percentage representation of the events that we have stored from a lower bound date and an upper bound date. 
 
     • DATA STRUCTURE 
       
