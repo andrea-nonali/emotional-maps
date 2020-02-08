@@ -9,7 +9,7 @@ DESCRIPTION
 
     • GOAL
       
-Given a text file with strings that represents emotional states in a point of Milan, the goal is to parse this strings, crete events and store it in a data structure sorted by occurrence date. Once we have stored data we create, under your request, an Emotional Map: a percentage representation of the events that we have stored from a lower bound date and an upper bound date. 
+Given a text file with strings that represents emotional states in some points of Milan, the goal is to parse this strings, crete events and store it in a data structure sorted by occurrence date. Once we have stored data we create, under your request, an Emotional Map: a percentage representation of the events that we have stored from a lower bound date and an upper bound date. 
 
     • DATA STRUCTURE 
       
