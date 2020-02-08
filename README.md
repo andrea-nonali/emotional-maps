@@ -9,7 +9,7 @@ DESCRIPTION
 
     • GOAL
       
-The goal is to parse data, that represent an event on three Milan place, from a file and store it in a data structure. Once we have stored data we create, under your request, an Emotional Map: a percentage representation of the events that we have stored from a lower bound date and an upper bound date. 
+Given a text file with strings that represents emotional states in a point of Milan, the goal is to parse this strings, crete events and store it in a data structure sorted by occurrence date. Once we have stored data we create, under your request, an Emotional Map: a percentage representation of the events that we have stored from a lower bound date and an upper bound date. 
 
     • DATA STRUCTURE 
       
@@ -23,4 +23,3 @@ In the test we did it takes 7 seconds to parse and store 1 milion events.
 The creation of an Emotional Map takes O(n + k) where n is included form first event of one year and the upper bound event you give us; k is the number of year we have to iterate through.
 	
 As you can see in "Manuale Tecnico" we manage to create a Map of about 1 milion events in 372 milliseconds.
-
