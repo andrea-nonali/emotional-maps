@@ -29,7 +29,7 @@ In the test we did it takes about 7 seconds to parse and store 1 milion events.
 	
 Creating an Emotional Map takes O(n + k). Where: 
 
---> [first event of TreeSet]< n < [upper bound date]; 
--->k = [number of years to iterate through ]
+[first event of TreeSet]< n < [upper bound date]; 
+k = [number of years to iterate through ]
 	
 As you can see in "Manuale Tecnico" we manage to create an Emotional Map of about 1 milion events in 372 milliseconds.
