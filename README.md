@@ -1,9 +1,6 @@
 ﻿# Laboratorio_A
 This was my firts project at the University and it is called Emotional Maps.
 
-For deeper information in this repository you can find two Manuals: Manuale Utente (for Users), Manuale Tecnico (for experts),
-but they are written in Italian.
-Furthermore the code has JavaDoc comments.
 
 DESCRIPTION
 
