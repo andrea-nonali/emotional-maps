@@ -65,11 +65,11 @@ public class StringParser {
             iter++;
         }
 
-        for(String s: eventFields)
+        /*for(String s: eventFields)
             if(!s.equals(""))
             System.out.println(s);
 
-        System.out.println();
+        System.out.println();*/
 
         //creo evento
         returnEvent = createEvent(eventFields);
