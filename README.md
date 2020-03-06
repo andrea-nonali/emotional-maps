@@ -1,4 +1,4 @@
-﻿# Laboratorio_A
+﻿# Emotional Maps
 This was my firts project at the University and it is called Emotional Maps.
 
 
