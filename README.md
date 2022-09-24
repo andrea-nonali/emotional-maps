@@ -1,32 +1,17 @@
-﻿# Emotional Maps
-This was my firts project at the University and it is called Emotional Maps.
+# Emotional Maps
+Emotional Maps is a project developed for an imaginary startup. In this startup there is an infrastructure used to collect the level of satisfcation of people in pre-determined places, called POI (points of interest). The goal of this repository is to create a program that, using the proper data strutures, efficiently calculates the emotional state of every POI, relatively to a time window.
 
 
-DESCRIPTION
-
-    • GOAL
+# Main data structure 
       
-We are given a text file with strings that represents emotional states in some points of Milan. The goal is to parse this strings and store their value in a data structure sorted by date. In addition under your request we create an Emotional Map: a percentage representation of the events that we have stored from a date to another. 
+HashMap of Red Black tree, or a java TreeSet. Events with the same year are stored in the same TreeSet and the HashMap collects all of them. 
 
-
-    • DATA STRUCTURE 
-      
-The data structure we used is an HashMap of Red Black tree (java TreeSet). Events with the same year are stored in the same TreeSet and the HashMap collect all of them. 
-
-    • PERFORMANCE
-      
-The import of events takes:
-
-O(1) to find the corresponding TreeSet of an event;
-O(log n) to add an event. Where n is the number of data in the TreeSet;
-total = O(log n).
-
-In the test we did it takes about 7 seconds to parse and store 1 milion events.
-
+### Complexity measures
+Importing events:
+O(1) to find the corresponding TreeSet of an event
+O(log n) to add an event. Where n is the number of data in the TreeSet
+total = O(log n)
 	
 Creating an Emotional Map takes O(n + k). Where: 
-
 [first event of TreeSet]< n < [upper bound date]; 
 k = [number of years to iterate through ]
-	
-As you can see in "Manuale Tecnico" we manage to create an Emotional Map of about 1 milion events in 372 milliseconds.
