@@ -22,7 +22,7 @@ public class EmotionalMaps {
 
             String path = reader.readLine();
 
-            if (path.equals("0")) break;
+            if (path == null || path.equals("0")) break;
 
             textReader.readCommands(path);
 

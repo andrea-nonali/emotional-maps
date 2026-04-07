@@ -2,6 +2,7 @@ package emotionalmaps;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Generates random events and writes them to a file.
@@ -50,56 +51,32 @@ public class RandomEventGenerator {
     }
 
     public static String randomDate() {
-        String date = "";
-
-        double randomDouble = Math.random();
-        randomDouble = randomDouble * 20 + 10;
-        int randomInt = (int) randomDouble;
-        date += Integer.toString(randomInt);
-
-        randomDouble = Math.random();
-        randomDouble = randomDouble * 3 + 10;
-        randomInt = (int) randomDouble;
-        date += Integer.toString(randomInt);
-
-        randomDouble = Math.random();
-        randomDouble = randomDouble * 30 + 2000;
-        randomInt = (int) randomDouble;
-        date += Integer.toString(randomInt);
-        date += " ";
-        return date;
+        int day   = (int) (Math.random() * 20 + 10);
+        int month = (int) (Math.random() *  3 + 10);
+        int year  = (int) (Math.random() * 30 + 2000);
+        return day + Integer.toString(month) + year + " ";
     }
 
     public static void main(String[] args) {
-        // Accept output path from command-line; fall back to current directory
         String outputPath = (args != null && args.length > 0)
                 ? args[0]
                 : System.getProperty("user.dir") + "/test-data.txt";
 
-        BufferedWriter writer = null;
-        try {
-            writer = new BufferedWriter(new FileWriter(outputPath));
-            for (int i = 0; i < 100000; i++) {
-                String result = "";
-                result += randomRegistrationStatus();
-                result += randomLoginStatus();
-                result += randomDate();
-                result += randomUserId();
-                result += randomCoordinates();
-                result += randomEmotionalState();
-                writer.write(result + "\n");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
+            for (int i = 0; i < 100_000; i++) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(randomRegistrationStatus());
+                sb.append(randomLoginStatus());
+                sb.append(randomDate());
+                sb.append(randomUserId());
+                sb.append(randomCoordinates());
+                sb.append(randomEmotionalState());
+                writer.write(sb.toString());
+                writer.newLine();
             }
             System.out.println("Generated 100,000 events → " + outputPath);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (Exception e) {
-                    // best effort
-                }
-            }
+        } catch (IOException e) {
+            System.err.println("Failed to write output file: " + e.getMessage());
         }
     }
 }

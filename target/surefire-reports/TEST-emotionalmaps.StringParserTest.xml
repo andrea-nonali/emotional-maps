@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407174546640_3.jar /Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire 2026-04-07T17-45-46_589-jvmRun1 surefire-20260407174546640_1tmp surefire_0-20260407174546640_2tmp"/>
+    <property name="sun.java.command" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407175552042_3.jar /Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire 2026-04-07T17-55-51_994-jvmRun1 surefire-20260407175552042_1tmp surefire_0-20260407175552042_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/test-classes:/Users/andrea.nonali/Documents/personal/emotional-maps/target/classes:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/andrea.nonali/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407174546640_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407175552042_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.2"/>
     <property name="user.name" value="andrea.nonali"/>
@@ -57,13 +57,13 @@
     <property name="java.class.version" value="69.0"/>
   </properties>
   <testcase name="parseStringToEvent_extraWhitespace_handled" classname="emotionalmaps.StringParserTest" time="0.002"/>
-  <testcase name="cutCommand_createMap_extractsDateRange" classname="emotionalmaps.StringParserTest" time="0.001"/>
+  <testcase name="cutCommand_createMap_extractsDateRange" classname="emotionalmaps.StringParserTest" time="0.0"/>
   <testcase name="parseStringToEvent_unrecognisedStatus_returnsNull" classname="emotionalmaps.StringParserTest" time="0.0">
     <system-err><![CDATA[Unrecognised event; it will not be added.
 
 ]]></system-err>
   </testcase>
-  <testcase name="parseStringToEvent_tooFewFields_returnsNull" classname="emotionalmaps.StringParserTest" time="0.001">
+  <testcase name="parseStringToEvent_tooFewFields_returnsNull" classname="emotionalmaps.StringParserTest" time="0.0">
     <system-err><![CDATA[Malformed event line (fewer than 6 fields): IN LOGIN 01012021
 ]]></system-err>
   </testcase>
@@ -73,10 +73,10 @@ The only recognised functions are import(filename.txt) and create_map(StartDate-
 
 ]]></system-err>
   </testcase>
-  <testcase name="cutCommand_import_extractsFileNameCorrectly" classname="emotionalmaps.StringParserTest" time="0.001"/>
-  <testcase name="parseStringToEvent_validLine_returnsEvent" classname="emotionalmaps.StringParserTest" time="0.0"/>
+  <testcase name="cutCommand_import_extractsFileNameCorrectly" classname="emotionalmaps.StringParserTest" time="0.0"/>
+  <testcase name="parseStringToEvent_validLine_returnsEvent" classname="emotionalmaps.StringParserTest" time="0.001"/>
   <testcase name="parseCoordinates_poi1Coords" classname="emotionalmaps.StringParserTest" time="0.0"/>
-  <testcase name="parseStringToEvent_outStatus" classname="emotionalmaps.StringParserTest" time="0.0"/>
-  <testcase name="parseCoordinates_withSpaces" classname="emotionalmaps.StringParserTest" time="0.0"/>
-  <testcase name="parseDateRange_returnsCorrectBounds" classname="emotionalmaps.StringParserTest" time="0.001"/>
+  <testcase name="parseStringToEvent_outStatus" classname="emotionalmaps.StringParserTest" time="0.001"/>
+  <testcase name="parseCoordinates_withSpaces" classname="emotionalmaps.StringParserTest" time="0.001"/>
+  <testcase name="parseDateRange_returnsCorrectBounds" classname="emotionalmaps.StringParserTest" time="0.0"/>
 </testsuite>

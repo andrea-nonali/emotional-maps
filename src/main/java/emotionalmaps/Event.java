@@ -8,6 +8,16 @@ import java.util.HashMap;
  */
 public class Event implements Comparable<Event> {
 
+    // POI bounding boxes (square geographic zones, coordinates in decimal degrees)
+    private static final float POI1_LAT_MIN = 45.459f, POI1_LAT_MAX = 45.469f;
+    private static final float POI1_LON_MIN =  9.185f, POI1_LON_MAX =  9.195f;
+
+    private static final float POI2_LAT_MIN = 45.468f, POI2_LAT_MAX = 45.478f;
+    private static final float POI2_LON_MIN =  9.168f, POI2_LON_MAX =  9.178f;
+
+    private static final float POI3_LAT_MIN = 45.453f, POI3_LAT_MAX = 45.463f;
+    private static final float POI3_LON_MIN =  9.176f, POI3_LON_MAX =  9.185f;
+
     private boolean registrationStatus;
     private boolean loginStatus;
     private HashMap<String, Integer> date;
@@ -94,23 +104,16 @@ public class Event implements Comparable<Event> {
     public void setPoi(String coordinatesValue) {
         float[] coordinates = StringParser.parseCoordinates(coordinatesValue);
 
-        // Square bounding box for POI1
-        if ((coordinates[0] >= 45.459 && coordinates[0] <= 45.469) &&
-                (coordinates[1] >= 9.185 && coordinates[1] <= 9.195)) {
+        if (coordinates[0] >= POI1_LAT_MIN && coordinates[0] <= POI1_LAT_MAX &&
+                coordinates[1] >= POI1_LON_MIN && coordinates[1] <= POI1_LON_MAX) {
             this.poi = "POI1";
-        }
-        // Square bounding box for POI2
-        else if ((coordinates[0] >= 45.468 && coordinates[0] <= 45.478) &&
-                (coordinates[1] >= 9.168 && coordinates[1] <= 9.178)) {
+        } else if (coordinates[0] >= POI2_LAT_MIN && coordinates[0] <= POI2_LAT_MAX &&
+                coordinates[1] >= POI2_LON_MIN && coordinates[1] <= POI2_LON_MAX) {
             this.poi = "POI2";
-        }
-        // Square bounding box for POI3
-        else if ((coordinates[0] >= 45.453 && coordinates[0] <= 45.463) &&
-                (coordinates[1] >= 9.176 && coordinates[1] <= 9.185)) {
+        } else if (coordinates[0] >= POI3_LAT_MIN && coordinates[0] <= POI3_LAT_MAX &&
+                coordinates[1] >= POI3_LON_MIN && coordinates[1] <= POI3_LON_MAX) {
             this.poi = "POI3";
-        }
-        // Outside all POI zones — will be discarded
-        else {
+        } else {
             this.poi = "UNDEFINED";
         }
     }

@@ -24,7 +24,7 @@ public class TxtReader {
      * Reads the command file at the given path and executes each command.
      */
     protected void readCommands(String commandsFilePath) {
-        // Use try-with-resources to ensure the reader is always closed
+        commands.clear(); // reset so repeated calls do not re-execute old commands
         try (BufferedReader in = new BufferedReader(new FileReader(commandsFilePath))) {
             String command;
             while ((command = in.readLine()) != null) {
@@ -72,23 +72,16 @@ public class TxtReader {
      * If the file cannot be opened the method logs an error and returns without crashing.
      */
     private void addEventsToDataManager(String fileName) throws IOException {
-        // Guard against FileNotFoundException before entering the read loop to avoid NPE
-        BufferedReader readFile;
-        try {
-            readFile = new BufferedReader(new FileReader(fileName));
-        } catch (FileNotFoundException e) {
-            System.err.println("Data file not found in filesystem: " + fileName + "\n");
-            return;
-        }
-
-        try (readFile) {
-            String eventValue;
-            while ((eventValue = readFile.readLine()) != null) {
-                Event event = StringParser.parseStringToEvent(eventValue);
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Event event = StringParser.parseStringToEvent(line);
                 if (event != null) {
                     this.dataManager.addEvent(event);
                 }
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("Data file not found: " + fileName);
         }
     }
 }

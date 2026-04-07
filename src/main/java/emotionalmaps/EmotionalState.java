@@ -14,7 +14,10 @@ public enum EmotionalState {
         }
     }
 
+    private static final EmotionalState[] VALUES = {ANGRY, HAPPY, SURPRISED, SAD, NEUTRAL};
+
+    /** Returns the fixed set of emotional states. The returned array is shared — do not mutate it. */
     public static EmotionalState[] toArray() {
-        return new EmotionalState[]{ANGRY, HAPPY, SURPRISED, SAD, NEUTRAL};
+        return VALUES;
     }
 }
