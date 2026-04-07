@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="emotionalmaps.DataManagerTest" time="15.641" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="emotionalmaps.DataManagerTest" time="0.034" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,8 +12,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407174546640_3.jar /Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire 2026-04-07T17-45-46_589-jvmRun1 surefire-20260407174546640_1tmp surefire_0-20260407174546640_2tmp"/>
+    <property name="sun.java.command" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407174847208_3.jar /Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire 2026-04-07T17-48-47_159-jvmRun1 surefire-20260407174847208_1tmp surefire_0-20260407174847208_2tmp"/>
     <property name="jdk.debug" value="release"/>
+    <property name="test" value="DataManagerTest#addEvent*,DataManagerTest#createMap*"/>
     <property name="surefire.test.class.path" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/test-classes:/Users/andrea.nonali/Documents/personal/emotional-maps/target/classes:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/andrea.nonali/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/andrea.nonali/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/andrea.nonali"/>
@@ -25,10 +26,10 @@
     <property name="basedir" value="/Users/andrea.nonali/Documents/personal/emotional-maps"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407174546640_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/andrea.nonali/Documents/personal/emotional-maps/target/surefire/surefirebooter-20260407174847208_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.2"/>
     <property name="user.name" value="andrea.nonali"/>
@@ -56,7 +57,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="addEvent_storesEventInCorrectYear" classname="emotionalmaps.DataManagerTest" time="0.004">
+  <testcase name="addEvent_storesEventInCorrectYear" classname="emotionalmaps.DataManagerTest" time="0.016">
     <system-out><![CDATA[Total events at POI1: 1
 Total events at POI2: 0
 Total events at POI3: 0
@@ -65,27 +66,15 @@ POI1 ---> 100% A 0% F 0% S 0% T 0% N
 POI2 ---> 0% A 0% F 0% S 0% T 0% N 
 POI3 ---> 0% A 0% F 0% S 0% T 0% N 
 
-Start time (ms): 1775576746994
-End time (ms):   1775576746996
+Start time (ms): 1775576927481
+End time (ms):   1775576927483
 Map creation time (ms): 2
 Map creation time (s):  0
 ]]></system-out>
   </testcase>
-  <testcase name="createMap_crossYear_includesEventsFromAllYears" classname="emotionalmaps.DataManagerTest" time="0.001"/>
+  <testcase name="createMap_crossYear_includesEventsFromAllYears" classname="emotionalmaps.DataManagerTest" time="0.002"/>
   <testcase name="createMap_poi2AndPoi3_countsAreIndependent" classname="emotionalmaps.DataManagerTest" time="0.001"/>
-  <testcase name="benchmark_createMap_1M_fullRange" classname="emotionalmaps.DataManagerTest" time="1.926">
-    <system-out><![CDATA[[benchmark] createMap 1M events, full range: 86 ms
-]]></system-out>
-  </testcase>
-  <testcase name="benchmark_createMap_1M_narrowWindow" classname="emotionalmaps.DataManagerTest" time="1.462">
-    <system-out><![CDATA[[benchmark] createMap 1M events, 1-year window: 5 ms
-]]></system-out>
-  </testcase>
-  <testcase name="benchmark_createMap_5M_fullRange" classname="emotionalmaps.DataManagerTest" time="10.531">
-    <system-out><![CDATA[[benchmark] createMap 5M events, full range: 508 ms
-]]></system-out>
-  </testcase>
-  <testcase name="addEvent_yearNotInStore_eventIsAdded" classname="emotionalmaps.DataManagerTest" time="0.004">
+  <testcase name="addEvent_yearNotInStore_eventIsAdded" classname="emotionalmaps.DataManagerTest" time="0.001">
     <system-out><![CDATA[Total events at POI1: 1
 Total events at POI2: 0
 Total events at POI3: 0
@@ -94,18 +83,12 @@ POI1 ---> 0% A 100% F 0% S 0% T 0% N
 POI2 ---> 0% A 0% F 0% S 0% T 0% N 
 POI3 ---> 0% A 0% F 0% S 0% T 0% N 
 
-Start time (ms): 1775576760925
-End time (ms):   1775576760925
+Start time (ms): 1775576927494
+End time (ms):   1775576927494
 Map creation time (ms): 0
 Map creation time (s):  0
 ]]></system-out>
-    <system-err><![CDATA[Year not in store: 1999 — adding it now.
-]]></system-err>
   </testcase>
-  <testcase name="createMap_sameYear_countsCorrectPoi1Events" classname="emotionalmaps.DataManagerTest" time="0.001"/>
-  <testcase name="createMap_excludesEventsOutsideDateRange" classname="emotionalmaps.DataManagerTest" time="0.001"/>
-  <testcase name="benchmark_addEvent_1M" classname="emotionalmaps.DataManagerTest" time="1.705">
-    <system-out><![CDATA[[benchmark] addEvent x1M: 1702 ms
-]]></system-out>
-  </testcase>
+  <testcase name="createMap_sameYear_countsCorrectPoi1Events" classname="emotionalmaps.DataManagerTest" time="0.0"/>
+  <testcase name="createMap_excludesEventsOutsideDateRange" classname="emotionalmaps.DataManagerTest" time="0.0"/>
 </testsuite>

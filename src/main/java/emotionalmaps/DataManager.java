@@ -35,13 +35,8 @@ public class DataManager {
      * a new TreeSet is created and the event is added to it.
      */
     public void addEvent(Event event) {
-        try {
-            this.dataCollector.get(event.getYear()).add(event);
-        } catch (NullPointerException exc) {
-            System.err.println("Year not in store: " + event.getYear() + " — adding it now.");
-            dataCollector.put(event.getYear(), new TreeSet<>(Event::compareTo));
-            dataCollector.get(event.getYear()).add(event); // BUG FIX: actually add the event
-        }
+        dataCollector.computeIfAbsent(event.getYear(), y -> new TreeSet<>(Event::compareTo))
+                     .add(event);
     }
 
     /**
@@ -49,13 +44,10 @@ public class DataManager {
      * and upper-bound years. O(1).
      */
     private boolean areThereEvents(Event lowerBound, Event upperBound) {
-        try {
-            if (this.dataCollector.get(lowerBound.getYear()).isEmpty()) return false;
-            if (this.dataCollector.get(upperBound.getYear()).isEmpty()) return false;
-        } catch (NullPointerException exc) {
-            return false;
-        }
-        return true;
+        TreeSet<Event> lowerSet = dataCollector.get(lowerBound.getYear());
+        TreeSet<Event> upperSet = dataCollector.get(upperBound.getYear());
+        return lowerSet != null && !lowerSet.isEmpty()
+            && upperSet != null && !upperSet.isEmpty();
     }
 
     /**
