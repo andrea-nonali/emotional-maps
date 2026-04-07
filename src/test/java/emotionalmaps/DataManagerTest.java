@@ -151,45 +151,76 @@ class DataManagerTest {
     }
 
     // -------------------------------------------------------------------------
-    // Simple in-process benchmark (non-JMH)
+    // In-process benchmarks (non-JMH)
+    // These are NOT a replacement for JMH (no warm-up, no statistical analysis)
+    // but give a quick order-of-magnitude sanity check at each scale.
+    // Run with: mvn test
     // -------------------------------------------------------------------------
 
-    /**
-     * Measures createMap performance over 100k events using System.nanoTime().
-     * This is NOT a replacement for JMH (no warm-up, no statistical analysis),
-     * but it verifies the code completes in a reasonable time and documents
-     * the expected order of magnitude.
-     */
+    /** Measures addEvent insertion throughput for 1 million events. */
     @Test
-    void benchmark_createMap_100kEvents() {
-        // Populate 100k events spread across 2000-2029
-        for (int i = 0; i < 100_000; i++) {
-            int year  = 2000 + (i % 30);
-            int month = 1 + (i % 12);
-            int day   = 1 + (i % 28);
-            String date = String.format("%02d%02d%04d", day, month, year);
-            String[] coords = {POI1_COORDS, POI2_COORDS, POI3_COORDS};
-            String   coord  = coords[i % 3];
-            String[] states = {"A", "F", "S", "T", "N"};
-            String   state  = states[i % 5];
-            dataManager.addEvent(new Event("IN", "LOGIN", date, "u" + i, coord, state));
-        }
+    void benchmark_addEvent_1M() {
+        long start = System.nanoTime();
+        populate(1_000_000);
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("[benchmark] addEvent x1M: " + elapsedMs + " ms");
+        assertTrue(elapsedMs < 30_000, "addEvent 1M took too long: " + elapsedMs + " ms");
+    }
 
+    /** createMap over 1M events, full 30-year date range. */
+    @Test
+    void benchmark_createMap_1M_fullRange() {
+        populate(1_000_000);
         long start = System.nanoTime();
         captureCreateMap("01012000-31122029");
-        long elapsed = System.nanoTime() - start;
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("[benchmark] createMap 1M events, full range: " + elapsedMs + " ms");
+        assertTrue(elapsedMs < 10_000, "createMap 1M full range took too long: " + elapsedMs + " ms");
+    }
 
-        long elapsedMs = elapsed / 1_000_000;
-        System.out.println("[benchmark] createMap over 100k events: " + elapsedMs + " ms");
+    /**
+     * createMap over 1M events but with a narrow 1-year window.
+     * Tests that the TreeSet early-break optimisation limits work to ~1/30 of the dataset.
+     */
+    @Test
+    void benchmark_createMap_1M_narrowWindow() {
+        populate(1_000_000);
+        long start = System.nanoTime();
+        captureCreateMap("01012015-31122015");
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("[benchmark] createMap 1M events, 1-year window: " + elapsedMs + " ms");
+        assertTrue(elapsedMs < 5_000, "createMap 1M narrow window took too long: " + elapsedMs + " ms");
+    }
 
-        // Sanity threshold: should complete well under 5 seconds on any modern machine
-        assertTrue(elapsedMs < 5000,
-                "createMap took too long: " + elapsedMs + " ms (expected < 5000 ms)");
+    /** createMap over 5M events, full 30-year date range. Requires -Xmx4g (set in pom.xml). */
+    @Test
+    void benchmark_createMap_5M_fullRange() {
+        populate(5_000_000);
+        long start = System.nanoTime();
+        captureCreateMap("01012000-31122029");
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("[benchmark] createMap 5M events, full range: " + elapsedMs + " ms");
+        assertTrue(elapsedMs < 60_000, "createMap 5M full range took too long: " + elapsedMs + " ms");
     }
 
     // -------------------------------------------------------------------------
     // Helper
     // -------------------------------------------------------------------------
+
+    /** Populates the DataManager with {@code count} synthetic events spread evenly across 2000-2029. */
+    private void populate(int count) {
+        String[] coords = {POI1_COORDS, POI2_COORDS, POI3_COORDS};
+        String[] states = {"A", "F", "S", "T", "N"};
+        for (int i = 0; i < count; i++) {
+            int year  = 2000 + (i % 30);
+            int month = 1 + (i % 12);
+            int day   = 1 + (i % 28);
+            String date  = String.format("%02d%02d%04d", day, month, year);
+            String coord = coords[i % 3];
+            String state = states[i % 5];
+            dataManager.addEvent(new Event("IN", "LOGIN", date, "u" + i, coord, state));
+        }
+    }
 
     /** Runs createMap and captures its stdout output as a String. */
     private String captureCreateMap(String dateRange) {
